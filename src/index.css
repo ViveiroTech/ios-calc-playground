@@ -2,51 +2,97 @@
 @tailwind components;
 @tailwind utilities;
 
-/* iPhone Calculator Design System */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    /* Calculator specific colors */
-    --calc-bg: 0 0% 0%;
-    --calc-display: 0 0% 100%;
-    --calc-button-number: 0 0% 20%;
-    --calc-button-number-hover: 0 0% 30%;
-    --calc-button-function: 0 0% 65%;
-    --calc-button-function-hover: 0 0% 80%;
-    --calc-button-operation: 28 100% 50%;
-    --calc-button-operation-hover: 28 100% 65%;
-    --calc-button-text-light: 0 0% 100%;
-    --calc-button-text-dark: 0 0% 0%;
+    --background: 140 30% 98%;
+    --foreground: 155 25% 12%;
 
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 155 25% 12%;
 
-    --card: 0 0% 0%;
-    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 155 25% 12%;
 
-    --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 100%;
+    --primary: 152 55% 32%;
+    --primary-foreground: 140 40% 98%;
+    --primary-soft: 152 45% 94%;
 
-    --primary: 28 100% 50%;
-    --primary-foreground: 0 0% 100%;
+    --secondary: 148 20% 94%;
+    --secondary-foreground: 155 25% 18%;
 
-    --secondary: 0 0% 20%;
-    --secondary-foreground: 0 0% 100%;
+    --muted: 148 18% 95%;
+    --muted-foreground: 155 10% 42%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
+    --accent: 42 92% 55%;
+    --accent-foreground: 40 40% 12%;
 
-    --accent: 0 0% 65%;
-    --accent-foreground: 0 0% 0%;
+    --success: 150 62% 36%;
+    --success-foreground: 150 40% 98%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 30 45% 12%;
+    --info: 208 82% 47%;
+    --info-foreground: 208 40% 98%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 72% 48%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 28 100% 50%;
+    --border: 150 14% 89%;
+    --input: 150 14% 89%;
+    --ring: 152 55% 32%;
 
-    --radius: 50%;
+    --radius: 1rem;
+
+    --gradient-brand: linear-gradient(135deg, hsl(152 55% 30%), hsl(168 55% 38%));
+    --shadow-card: 0 1px 2px hsl(155 25% 12% / 0.04), 0 8px 24px -12px hsl(155 25% 12% / 0.12);
+    --shadow-float: 0 10px 30px -8px hsl(152 55% 25% / 0.35);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 155 25% 18%;
+    --sidebar-primary: 152 55% 32%;
+    --sidebar-primary-foreground: 140 40% 98%;
+    --sidebar-accent: 152 45% 94%;
+    --sidebar-accent-foreground: 152 55% 22%;
+    --sidebar-border: 150 14% 90%;
+    --sidebar-ring: 152 55% 32%;
+  }
+
+  .dark {
+    --background: 158 24% 8%;
+    --foreground: 140 20% 96%;
+    --card: 158 22% 11%;
+    --card-foreground: 140 20% 96%;
+    --popover: 158 22% 11%;
+    --popover-foreground: 140 20% 96%;
+    --primary: 152 50% 45%;
+    --primary-foreground: 158 30% 8%;
+    --primary-soft: 155 30% 16%;
+    --secondary: 158 16% 16%;
+    --secondary-foreground: 140 20% 96%;
+    --muted: 158 16% 16%;
+    --muted-foreground: 145 10% 65%;
+    --accent: 42 88% 58%;
+    --accent-foreground: 40 40% 10%;
+    --success: 150 55% 45%;
+    --success-foreground: 158 30% 8%;
+    --warning: 38 88% 55%;
+    --warning-foreground: 30 45% 10%;
+    --info: 208 75% 58%;
+    --info-foreground: 208 40% 10%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 158 14% 20%;
+    --input: 158 14% 20%;
+    --ring: 152 50% 45%;
+    --sidebar-background: 158 22% 11%;
+    --sidebar-foreground: 140 20% 96%;
+    --sidebar-primary: 152 50% 45%;
+    --sidebar-primary-foreground: 158 30% 8%;
+    --sidebar-accent: 155 30% 16%;
+    --sidebar-accent-foreground: 140 20% 96%;
+    --sidebar-border: 158 14% 20%;
+    --sidebar-ring: 152 50% 45%;
   }
 }
 
@@ -57,95 +103,30 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Manrope', system-ui, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Sora', system-ui, sans-serif;
   }
 }
 
 @layer components {
-  .calculator-container {
-    @apply w-full max-w-sm mx-auto flex flex-col;
-    min-height: 100dvh;
-    background: hsl(var(--calc-bg));
-    padding: 0 12px 24px;
+  .card-surface {
+    @apply rounded-2xl border bg-card;
+    box-shadow: var(--shadow-card);
   }
 
-  .calculator-display {
-    @apply flex-1 flex items-end justify-end px-4 pb-4;
-    min-height: 120px;
+  .brand-gradient {
+    background: var(--gradient-brand);
   }
 
-  .calculator-display-text {
-    color: hsl(var(--calc-display));
-    font-weight: 300;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    transition: font-size 0.15s ease;
+  .stat-value {
+    @apply font-display text-2xl font-semibold tracking-tight;
   }
 
-  .calculator-buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-  }
-
-  .calculator-button {
-    aspect-ratio: 1;
-    border-radius: 50%;
-    font-size: 32px;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.1s ease;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    border: none;
-    outline: none;
-  }
-
-  .calculator-button:active {
-    transform: scale(0.95);
-  }
-
-  .calculator-button-number {
-    background: hsl(var(--calc-button-number));
-    color: hsl(var(--calc-button-text-light));
-  }
-
-  .calculator-button-number:hover {
-    background: hsl(var(--calc-button-number-hover));
-  }
-
-  .calculator-button-function {
-    background: hsl(var(--calc-button-function));
-    color: hsl(var(--calc-button-text-dark));
-  }
-
-  .calculator-button-function:hover {
-    background: hsl(var(--calc-button-function-hover));
-  }
-
-  .calculator-button-operation {
-    background: hsl(var(--calc-button-operation));
-    color: hsl(var(--calc-button-text-light));
-    font-size: 38px;
-  }
-
-  .calculator-button-operation:hover {
-    background: hsl(var(--calc-button-operation-hover));
-  }
-
-  .calculator-button-operation-active {
-    background: hsl(var(--calc-button-text-light)) !important;
-    color: hsl(var(--calc-button-operation)) !important;
-  }
-
-  .calculator-button-wide {
-    grid-column: span 2;
-    aspect-ratio: auto;
-    border-radius: 100px;
-    padding-left: 28px;
-    justify-content: flex-start;
+  .safe-bottom {
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0.5rem);
   }
 }
