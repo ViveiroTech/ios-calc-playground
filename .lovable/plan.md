@@ -4,6 +4,8 @@ Plataforma SaaS mobile-first para gestão de chocadeiras e incubação, com cont
 
 Observação: o projeto atual contém apenas uma calculadora de demonstração. Ela será substituída pela nova aplicação.
 
+Situação atual: a Etapa 1 (banco de dados, papéis, planos, assinaturas, RLS, funções seguras e armazenamento privado de fotos) já foi criada no backend. A construção continua da Etapa 2 em diante.
+
 ## Fundamentos
 
 - Backend: Lovable Cloud (banco Postgres, autenticação, storage, funções) — ativado no início.
